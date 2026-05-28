@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brakepoint Padel — Landing Page Wireframes</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0c0c0c;
+  --white: #f4f1ec;
+  --green: #1e4d1a;
+  --green-bright: #2e7a26;
+  --acid: #b8f050;
+  --grey-dark: #181818;
+  --grey-mid: #282828;
+  --grey-light: #3a3a3a;
+  --text-muted: #777;
+  --text-dim: #555;
+  --red: #e84040;
+  --orange: #f5a623;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: #111;
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+}
+
+/* ── DOC HEADER ── */
+.doc-header {
+  background: var(--black);
+  border-bottom: 1px solid #222;
+  padding: 24px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+.doc-header h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.doc-header h1 span { color: var(--acid); }
+.doc-header .meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+/* ── TAB SWITCHER ── */
+.tab-switcher {
+  background: var(--grey-dark);
+  border-bottom: 1px solid #222;
+  padding: 0 40px;
+  display: flex;
+  gap: 0;
+}
+.tab-btn {
+  padding: 18px 32px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tab-btn:hover { color: var(--white); }
+.tab-btn.active {
+  color: var(--acid);
+  border-bottom-color: var(--acid);
+}
+.tab-badge {
+  display: inline-block;
+  background: var(--grey-light);
+  color: var(--text-muted);
+  font-size: 9px;
+  padding: 2px 8px;
+  margin-left: 8px;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+.tab-btn.active .tab-badge {
+  background: rgba(184,240,80,0.15);
+  color: var(--acid);
+}
+
+/* ── VERSION PANELS ── */
+.version { display: none; }
+.version.active { display: block; }
+
+/* ── ANNOTATION SYSTEM ── */
+.annotated {
+  position: relative;
+  border: 1px dashed transparent;
+  transition: border-color 0.2s;
+}
+.annotated:hover {
+  border-color: rgba(184,240,80,0.3);
+}
+.annotation {
+  display: none;
+  position: absolute;
+  right: -280px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
+  background: var(--black);
+  border: 1px solid var(--acid);
+  padding: 12px 16px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--white);
+  font-family: 'DM Mono', monospace;
+  z-index: 100;
+  pointer-events: none;
+}
+.annotation::before {
+  content: 'WHY THIS WORKS';
+  display: block;
+  color: var(--acid);
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.annotated:hover .annotation { display: block; }
+
+/* ── LEGEND BAR ── */
+.legend-bar {
+  background: rgba(184,240,80,0.05);
+  border-bottom: 1px solid rgba(184,240,80,0.15);
+  padding: 12px 40px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--acid);
+  letter-spacing: 1px;
+}
+
+/* ══════════════════════════════════════════════
+   LANDING PAGE COMPONENTS
+══════════════════════════════════════════════ */
+
+/* STICKY TOP BAR */
+.sticky-bar {
+  background: var(--acid);
+  color: var(--black);
+  text-align: center;
+  padding: 10px 20px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.sticky-bar span {
+  background: var(--black);
+  color: var(--acid);
+  padding: 2px 10px;
+  margin: 0 8px;
+  font-size: 12px;
+}
+
+/* NAV */
+.lp-nav {
+  background: rgba(12,12,12,0.97);
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1a1a1a;
+}
+.lp-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.lp-logo span { color: var(--acid); }
+.nav-cta {
+  background: var(--acid);
+  color: var(--black);
+  border: none;
+  padding: 10px 24px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  min-height: 75vh;
+  background: linear-gradient(135deg, #0c0c0c 0%, #0f1a0d 40%, #0c0c0c 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 80px 40px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 70% 50%, rgba(46,122,38,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(184,240,80,0.06) 0%, transparent 50%);
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(184,240,80,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184,240,80,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--acid);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: var(--acid);
+}
+.hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 900;
+  line-height: 0.9;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+.hero h1 em {
+  color: var(--acid);
+  font-style: normal;
+  display: block;
+}
+.hero-sub {
+  font-size: 17px;
+  color: #aaa;
+  line-height: 1.6;
+  max-width: 460px;
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--acid);
+  color: var(--black);
+  border: none;
+  padding: 16px 36px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-primary:hover { background: #c9ff5a; transform: translateY(-1px); }
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid #444;
+  padding: 16px 36px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-secondary:hover { border-color: var(--acid); color: var(--acid); }
+.hero-stats {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.hero-stat {
+  text-align: center;
+  border-left: 2px solid var(--acid);
+  padding-left: 20px;
+}
+.hero-stat .num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+}
+.hero-stat .num span { color: var(--acid); }
+.hero-stat .label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* TRUST BAR */
+.trust-bar {
+  background: var(--grey-dark);
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.trust-icon {
+  color: var(--acid);
+  font-size: 16px;
+}
+
+/* SECTION WRAPPER */
+.section {
+  padding: 80px 40px;
+}
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--acid);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 8px;
+}
+.section-sub {
+  color: var(--text-muted);
+  font-size: 15px;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+/* BOOKING WIDGET SECTION */
+.booking-section {
+  background: var(--black);
+  padding: 70px 40px;
+}
+.booking-section.dark-green {
+  background: linear-gradient(135deg, #0c0c0c 0%, #0b150a 100%);
+}
+.booking-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 60px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.booking-sidebar {}
+.booking-sidebar h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 0.9;
+  margin-bottom: 20px;
+}
+.booking-sidebar h2 em { color: var(--acid); font-style: normal; display: block; }
+.booking-sidebar p {
+  color: #888;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.benefit-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.benefit-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.5;
+}
+.benefit-list li::before {
+  content: '→';
+  color: var(--acid);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.peak-callout {
+  background: rgba(184,240,80,0.06);
+  border: 1px solid rgba(184,240,80,0.2);
+  padding: 16px 20px;
+  margin-top: 24px;
+}
+.peak-callout .label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--acid);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.peak-callout p { font-size: 13px; color: #ccc; line-height: 1.5; }
+
+/* WIDGET IFRAME */
+.widget-frame {
+  background: var(--grey-dark);
+  border: 1px solid #2a2a2a;
+  border-radius: 2px;
+  overflow: hidden;
+  min-height: 600px;
+  position: relative;
+}
+.widget-frame iframe {
+  width: 100%;
+  height: 650px;
+  border: none;
+  display: block;
+}
+.widget-frame-label {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: rgba(12,12,12,0.9);
+  border-bottom: 1px solid #222;
+  padding: 10px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--acid);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* SOCIAL PROOF */
+.reviews-section {
+  background: var(--grey-dark);
+  padding: 70px 40px;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.review-card {
+  background: var(--black);
+  border: 1px solid #1f1f1f;
+  padding: 28px;
+  position: relative;
+}
+.review-stars { color: var(--acid); font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
+.review-text { font-size: 14px; color: #bbb; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+.reviewer { display: flex; align-items: center; gap: 12px; }
+.reviewer-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--green-bright);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--acid);
+}
+.reviewer-name { font-size: 13px; font-weight: 600; color: var(--white); }
+.reviewer-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 1px; }
+
+/* HOW IT WORKS */
+.how-section {
+  background: var(--black);
+  padding: 70px 40px;
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #1a1a1a;
+  margin-top: 50px;
+  max-width: 1000px;
+}
+.step {
+  background: var(--black);
+  padding: 40px 32px;
+  position: relative;
+}
+.step-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: #191919;
+  line-height: 1;
+  position: absolute;
+  top: 20px; right: 24px;
+}
+.step-icon { font-size: 28px; margin-bottom: 16px; }
+.step h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+.step p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+/* MEMBERSHIP SECTION */
+.membership-section {
+  background: linear-gradient(180deg, #0c0c0c 0%, #0b180a 50%, #0c0c0c 100%);
+  padding: 80px 40px;
+  border-top: 1px solid #1a1a1a;
+}
+.membership-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 50px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.membership-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.membership-card {
+  background: var(--grey-dark);
+  border: 1px solid #222;
+  padding: 36px 28px;
+  position: relative;
+  transition: border-color 0.2s;
+}
+.membership-card:hover { border-color: #444; }
+.membership-card.featured {
+  border-color: var(--acid);
+  background: linear-gradient(180deg, rgba(184,240,80,0.04) 0%, var(--grey-dark) 100%);
+}
+.membership-card.featured::before {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: -1px; left: -1px; right: -1px;
+  background: var(--acid);
+  color: var(--black);
+  text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 6px;
+}
+.card-tier {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  margin-top: 20px;
+}
+.featured .card-tier { color: var(--acid); }
+.card-price {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 54px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.card-price span { font-size: 20px; color: var(--text-muted); vertical-align: top; margin-top: 10px; display: inline-block; }
+.card-freq { font-size: 12px; color: var(--text-muted); margin-bottom: 28px; }
+.card-features { list-style: none; margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; }
+.card-features li { font-size: 13px; color: #aaa; display: flex; gap: 10px; line-height: 1.4; }
+.card-features li::before { content: '✓'; color: var(--acid); font-weight: 700; flex-shrink: 0; }
+.card-features li.dim { color: var(--text-dim); }
+.card-features li.dim::before { content: '✗'; color: #333; }
+.card-cta {
+  width: 100%;
+  padding: 14px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid #333;
+  background: transparent;
+  color: var(--white);
+  transition: all 0.15s;
+}
+.card-cta:hover { border-color: var(--acid); color: var(--acid); }
+.featured .card-cta {
+  background: var(--acid);
+  color: var(--black);
+  border-color: var(--acid);
+}
+.featured .card-cta:hover { background: #c9ff5a; }
+
+/* URGENCY BANNER */
+.urgency-banner {
+  background: var(--red);
+  padding: 16px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.urgency-banner .count {
+  background: var(--black);
+  color: var(--red);
+  padding: 4px 14px;
+  font-size: 20px;
+}
+
+/* OFF PEAK */
+.offpeak-section {
+  background: var(--grey-dark);
+  padding: 70px 40px;
+  border-top: 1px solid #1a1a1a;
+}
+.offpeak-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.time-slots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 30px;
+}
+.time-slot {
+  background: var(--black);
+  border: 1px solid #222;
+  padding: 16px 20px;
+  position: relative;
+}
+.time-slot.available { border-color: rgba(184,240,80,0.3); }
+.slot-time { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; color: var(--white); }
+.slot-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+.slot-badge {
+  position: absolute;
+  top: 8px; right: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+}
+.slot-badge.avail { background: rgba(184,240,80,0.1); color: var(--acid); }
+.slot-badge.price { background: rgba(184,240,80,0.15); color: var(--acid); }
+
+/* FAQ */
+.faq-section {
+  background: var(--black);
+  padding: 70px 40px;
+  border-top: 1px solid #1a1a1a;
+}
+.faq-list { max-width: 700px; display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
+.faq-item { border-bottom: 1px solid #1f1f1f; }
+.faq-q {
+  padding: 20px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-q::after { content: '+'; color: var(--acid); font-size: 20px; }
+.faq-a {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  padding-bottom: 20px;
+  max-width: 600px;
+}
+
+/* FOOTER CTA */
+.footer-cta {
+  background: var(--green);
+  padding: 80px 40px;
+  text-align: center;
+}
+.footer-cta h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 60px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 0.9;
+  margin-bottom: 20px;
+}
+.footer-cta h2 em { color: var(--acid); font-style: normal; }
+.footer-cta p { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 36px; }
+.footer-cta-btns { display: flex; gap: 16px; justify-content: center; }
+
+/* ── SECTION DIVIDER / LABEL ── */
+.section-divider {
+  background: #151515;
+  border-top: 1px solid #1f1f1f;
+  border-bottom: 1px solid #1f1f1f;
+  padding: 12px 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.divider-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.divider-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--acid);
+  letter-spacing: 1px;
+  margin-left: auto;
+}
+
+/* CONVERSION BADGE */
+.conv-badge {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--acid);
+  color: var(--black);
+  padding: 10px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  z-index: 300;
+  border: none;
+  cursor: pointer;
+}
+
+/* VERSION B specifics */
+.membership-hero {
+  min-height: 65vh;
+  background: linear-gradient(135deg, #0a150a 0%, #0c1f0a 40%, #0a150a 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 80px 40px;
+}
+.membership-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 60% 40%, rgba(184,240,80,0.08) 0%, transparent 60%);
+}
+.vs-divider {
+  background: var(--grey-dark);
+  padding: 50px 40px;
+  text-align: center;
+  border-top: 1px solid #1a1a1a;
+}
+.vs-divider h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.vs-divider p { font-size: 14px; color: var(--text-dim); }
+
+/* RESPONSIVE NOTE */
+@media (max-width: 900px) {
+  .booking-layout, .offpeak-grid, .reviews-grid, .membership-grid, .steps-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-stats { display: none; }
+  .membership-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+}
+
+/* SCROLL ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animated {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+/* COMPARE TABLE */
+.compare-table {
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+  margin-top: 40px;
+}
+.compare-table th {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 2px solid #222;
+  color: var(--white);
+}
+.compare-table th.highlight { color: var(--acid); }
+.compare-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #1a1a1a;
+  font-size: 13px;
+  color: #aaa;
+}
+.compare-table td:first-child { color: var(--white); font-weight: 500; }
+.compare-table .check { color: var(--acid); font-size: 16px; }
+.compare-table .cross { color: #333; font-size: 16px; }
+.compare-table tr:hover td { background: rgba(255,255,255,0.01); }
+
+/* SCARCITY */
+.scarcity-bar {
+  background: rgba(232,64,64,0.08);
+  border: 1px solid rgba(232,64,64,0.2);
+  padding: 14px 24px;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #e84040;
+}
+.scarcity-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: pulse 1.5s infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+</style>
+</head>
+<body>
+
+<!-- DOC HEADER -->
+<div class="doc-header">
+  <h1>BRAKEPOINT PADEL — <span>LANDING PAGE WIREFRAMES</span></h1>
+  <div class="meta">CONVERSION STRATEGY // 2 VARIANTS // MAY 2026</div>
+</div>
+
+<!-- TAB SWITCHER -->
+<div class="tab-switcher">
+  <button class="tab-btn active" onclick="switchTab('a')">
+    Version A <span class="tab-badge">BOOKING FIRST</span>
+  </button>
+  <button class="tab-btn" onclick="switchTab('b')">
+    Version B <span class="tab-badge">MEMBERSHIP FIRST</span>
+  </button>
+</div>
+
+<!-- LEGEND -->
+<div class="legend-bar">
+  ⬡ Hover over any section to see conversion rationale — or browse both variants using the tabs above
+</div>
+
+<!-- ═══════════════════════════════════════════
+     VERSION A — BOOKING FIRST
+═══════════════════════════════════════════ -->
+<div class="version active" id="version-a">
+
+  <!-- STICKY OFFER BAR -->
+  <div class="annotated">
+    <div class="sticky-bar">
+      🎾 CANTERBURY'S FIRST INDOOR PADEL CLUB <span>NOW OPEN</span> BOOK A COURT TODAY
+    </div>
+    <div class="annotation" style="right:auto;left:10px;top:60px;transform:none;">
+      Anchors the value proposition instantly. "Only" creates category ownership. Never let the first thing they see be navigation.
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="annotated">
+    <div class="lp-nav">
+      <div class="lp-logo">BRAKE<span>POINT</span></div>
+      <div style="display:flex;align-items:center;gap:24px;">
+        <a href="#booking" style="color:#888;text-decoration:none;font-size:13px;font-weight:500;">Book Now</a>
+        <a href="#membership" style="color:#888;text-decoration:none;font-size:13px;font-weight:500;">Membership</a>
+        <a href="#offpeak" style="color:#888;text-decoration:none;font-size:13px;font-weight:500;">Off-Peak Deals</a>
+        <button class="nav-cta">Book a Court →</button>
+      </div>
+    </div>
+    <div class="annotation" style="top:70px;">
+      Sticky nav CTA follows them down the page. Every navigation option points to a section lower on the page — keeps them on the page, not bouncing away.
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="annotated">
+    <div class="hero">
+      <div class="hero-grid"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">Canterbury, Kent · CT1 3RA</div>
+        <h1>
+          PLAY PADEL.
+          <em>BOOK A COURT</em>
+          TODAY.
+        </h1>
+        <p class="hero-sub">Brakepoint Padel Club is Canterbury's first indoor padel club. 3 indoor panoramic courts, flexible booking, and a growing community of players at every level.</p>
+        <div class="hero-ctas">
+          <button class="btn-primary">↓ Book a Court Now</button>
+          <button class="btn-secondary">See Membership Options</button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">3<span></span></div>
+          <div class="label">Indoor Panoramic Courts</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">6<span>am</span></div>
+          <div class="label">Open Daily Until 11pm</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">£<span>36</span></div>
+          <div class="label">Starting Price / Hour</div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation">
+      Single dominant CTA above the fold. Hero copy focuses on action, not description. Stats add instant credibility without effort. Secondary CTA seeds membership intent early.
+    </div>
+  </div>
+
+  <!-- TRUST BAR -->
+  <div class="annotated">
+    <div class="trust-bar">
+      <div class="trust-item"><span class="trust-icon">✓</span> No membership required</div>
+      <div class="trust-item"><span class="trust-icon">☕</span> Coffee shop on-site</div>
+      <div class="trust-item"><span class="trust-icon">📍</span> Wincheap, Canterbury</div>
+      <div class="trust-item"><span class="trust-icon">⚡</span> From £36/hr · Book via Playtomic</div>
+      <div class="trust-item"><span class="trust-icon">🅿</span> Free parking on-site</div>
+    </div>
+    <div class="annotation" style="top:60px;">
+      Removes objections before they arise. "No membership required" stops casual browsers from bouncing before they've even tried to book. Fast, scannable, reassuring.
+    </div>
+  </div>
+
+  <!-- BOOKING WIDGET -->
+  <div class="section-divider" id="booking">
+    <div class="divider-label">Section 02 — Primary Conversion</div>
+    <div class="divider-note">↓ BOOK A COURT</div>
+  </div>
+
+  <div class="annotated">
+    <div class="booking-section dark-green">
+      <div class="booking-layout">
+        <div class="booking-sidebar">
+          <div class="section-label">Book Your Court</div>
+          <h2>FIND YOUR<br><em>SLOT.</em></h2>
+          <p>Pick a date, choose a court, pay online. Your booking is confirmed instantly through Playtomic.</p>
+          <ul class="benefit-list">
+            <li>3 indoor panoramic courts — open 6am to 11pm daily</li>
+            <li>Coaching sessions available for all levels</li>
+            <li>Racket + ball hire on-site</li>
+            <li>Coffee shop, pro shop, changing rooms &amp; showers on-site</li>
+            <li>Changing rooms, showers &amp; disabled access</li>
+          </ul>
+          <div class="peak-callout">
+            <div class="label">💡 Off-Peak Tip</div>
+            <p>Slots before midday and after 10pm are cheaper and often available same-day. Great for regular players.</p>
+          </div>
+          <div class="scarcity-bar">
+            <div class="scarcity-dot"></div>
+            Weekend courts filling up fast — midweek slots open now
+          </div>
+        </div>
+        <div>
+          <div class="widget-frame">
+            <div class="widget-frame-label">↓ Live Booking — Brakepoint Padel Club</div>
+            <div style="padding-top:45px;">
+              <iframe 
+                src="https://playtomic.com/clubs/brakepoint-padel-club/embed"
+                width="100%" 
+                height="620"
+                frameborder="0"
+                scrolling="auto"
+                allow="payment">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation">
+      Widget sits prominently with sidebar copy reinforcing the decision to book. Scarcity signal ("filling fast") and off-peak nudge both serve the ad account strategy — driving bookings at lower-demand windows. No extra clicks required.
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="annotated">
+    <div class="how-section">
+      <div class="section-label">Simple Process</div>
+      <div class="section-title">HOW IT WORKS</div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-icon">📅</div>
+          <h3>Pick a Date & Time</h3>
+          <p>Choose from available slots using the booking widget. Off-peak times get you a better deal.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-icon">💳</div>
+          <h3>Pay Securely Online</h3>
+          <p>Pay via card through Playtomic. Your court is reserved immediately — no deposit wait.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-icon">🎾</div>
+          <h3>Show Up & Play</h3>
+          <p>Arrive, scan in, and get on court. Hire equipment on-site if you need it. That's it.</p>
+        </div>
+      </div>
+    </div>
+    <div class="annotation">
+      Overcomes hesitation from people who've never booked a padel court before. 3 steps max — any more and it creates doubt. Addresses the biggest barrier: "is this complicated?"
+    </div>
+  </div>
+
+  <!-- SOCIAL PROOF -->
+  <div class="annotated">
+    <div class="reviews-section">
+      <div class="section-label">What Players Say</div>
+      <div class="section-title">REAL REVIEWS</div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"Booked on a Tuesday morning, had the court to ourselves. Staff were great, courts are in fantastic condition. Will be coming every week."</div>
+          <div class="reviewer">
+            <div class="reviewer-avatar">JM</div>
+            <div>
+              <div class="reviewer-name">James M.</div>
+              <div class="reviewer-meta">Member · Canterbury</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"Never played padel before. The team here made it super easy to get started. Completely addicted now — go on the off-peak slots if you can."</div>
+          <div class="reviewer">
+            <div class="reviewer-avatar">SR</div>
+            <div>
+              <div class="reviewer-name">Sarah R.</div>
+              <div class="reviewer-meta">Beginner · Herne Bay</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"Best padel facility in Kent. Courts are always clean, booking is easy on the app. Got the monthly membership and it's already paying for itself."</div>
+          <div class="reviewer">
+            <div class="reviewer-avatar">TK</div>
+            <div>
+              <div class="reviewer-name">Tom K.</div>
+              <div class="reviewer-meta">Gold Member · Whitstable</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation">
+      Review 3 seeds membership naturally — real member casually mentioning ROI is far more persuasive than a sales pitch. Review 2 targets total beginners who are your largest addressable audience. Place after the widget so they've already tried to book — this cements the decision.
+    </div>
+  </div>
+
+  <!-- OFF PEAK -->
+  <div class="section-divider" id="offpeak">
+    <div class="divider-label">Section 04 — Off-Peak Push</div>
+    <div class="divider-note">↓ SAVE MORE, PLAY MORE</div>
+  </div>
+
+  <div class="annotated">
+    <div class="offpeak-section">
+      <div class="offpeak-grid">
+        <div>
+          <div class="section-label">Flexible Pricing</div>
+          <div class="section-title">PLAY OFF-PEAK.<br>PAY LESS.</div>
+          <p style="color:#888;font-size:14px;line-height:1.7;margin-top:16px;margin-bottom:32px;">
+            Courts before midday and after 10pm come at a lower rate — and they're often wide open. Perfect if you're building a regular habit, or just want to squeeze in a session during the week.
+          </p>
+          <button class="btn-primary" style="margin-right:12px;">Book Off-Peak →</button>
+        </div>
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--acid);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;">Today's Availability</div>
+          <div class="time-slots">
+            <div class="time-slot available">
+              <div class="slot-badge price">OFF-PEAK</div>
+              <div class="slot-time">7am</div>
+              <div class="slot-label">Mon – Fri</div>
+            </div>
+            <div class="time-slot available">
+              <div class="slot-badge price">OFF-PEAK</div>
+              <div class="slot-time">9am</div>
+              <div class="slot-label">Mon – Fri</div>
+            </div>
+            <div class="time-slot available">
+              <div class="slot-badge price">OFF-PEAK</div>
+              <div class="slot-time">11am</div>
+              <div class="slot-label">Mon – Fri</div>
+            </div>
+            <div class="time-slot available">
+              <div class="slot-badge price">OFF-PEAK</div>
+              <div class="slot-time">10pm+</div>
+              <div class="slot-label">Mon – Sun</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation">
+      Directly serves the Meta campaign objective: fill off-peak courts. Visual slot display makes scarcity concrete and triggers action. This section works double duty — brings bookers back AND educates members on maximising their time.
+    </div>
+  </div>
+
+  <!-- MEMBERSHIP UPSELL -->
+  <div class="section-divider" id="membership">
+    <div class="divider-label">Section 05 — Revenue Lever 2</div>
+    <div class="divider-note">↓ MEMBERSHIP UPSELL</div>
+  </div>
+
+  <div class="annotated">
+    <div class="membership-section">
+      <div class="membership-header">
+        <div>
+          <div class="section-label">Unlimited Access</div>
+          <div class="section-title">4 TIERS.<br>ONE CLUB.</div>
+          <p class="section-sub" style="margin-top:8px;">From £15/month. Every tier gets 25-day advance booking — non-members only get 7 days. If you play off-peak regularly, the Work From Home membership pays for itself in 2–3 sessions.</p>
+        </div>
+        <div class="scarcity-bar" style="max-width:280px;margin:0;">
+          <div class="scarcity-dot"></div>
+          Limited member spots available
+        </div>
+      </div>
+      <div class="membership-grid" style="grid-template-columns:repeat(4,1fr);">
+        <div class="membership-card">
+          <div class="card-tier">Plan Ahead</div>
+          <div class="card-price"><span>£</span>15</div>
+          <div class="card-freq">per month · cancel anytime</div>
+          <ul class="card-features">
+            <li>Book courts 25 days in advance</li>
+            <li>Non-members: 7 days only</li>
+            <li>25% off coffee in the café</li>
+            <li class="dim">Court booking discount</li>
+            <li class="dim">Pro shop discount</li>
+          </ul>
+          <button class="card-cta">Get Started</button>
+        </div>
+        <div class="membership-card">
+          <div class="card-tier">Work From Home</div>
+          <div class="card-price"><span>£</span>25</div>
+          <div class="card-freq">per month · cancel anytime</div>
+          <ul class="card-features">
+            <li>30% off off-peak bookings</li>
+            <li>Mon–Fri, 6am–5pm</li>
+            <li>Book 25 days in advance</li>
+            <li>25% off coffee in the café</li>
+            <li class="dim">Weekend discount</li>
+          </ul>
+          <button class="card-cta">Get Started</button>
+        </div>
+        <div class="membership-card featured">
+          <div class="card-tier">Green</div>
+          <div class="card-price"><span>£</span>50</div>
+          <div class="card-freq">per month · cancel anytime</div>
+          <ul class="card-features">
+            <li>30% off all court bookings</li>
+            <li>7 days a week, any time</li>
+            <li>Book 25 days in advance</li>
+            <li>25% off coffee in the café</li>
+            <li class="dim">Pro shop discount</li>
+          </ul>
+          <button class="card-cta">Join Green →</button>
+        </div>
+        <div class="membership-card">
+          <div class="card-tier">Terracotta</div>
+          <div class="card-price"><span>£</span>70</div>
+          <div class="card-freq">per month · cancel anytime</div>
+          <ul class="card-features">
+            <li>40% off all court bookings</li>
+            <li>7 days a week, any time</li>
+            <li>Book 25 days in advance</li>
+            <li>25% off coffee in the café</li>
+            <li>10% off in the pro shop</li>
+          </ul>
+          <button class="card-cta">Join Terracotta →</button>
+        </div>
+      </div>
+    </div>
+    <div class="annotation" style="right:auto;left:10px;">
+      Membership introduced after they've already decided Brakepoint is worth visiting. The ROI framing ("booking more than twice a month") does the selling. Scarcity signal creates urgency. "Most Popular" draws the eye to the highest-value tier. Corporate option captures a different buyer entirely — doesn't dilute the individual pitch.
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="annotated">
+    <div class="faq-section">
+      <div class="section-label">Common Questions</div>
+      <div class="section-title">FAQ</div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Do I need to be a member to book a court?</div>
+          <div class="faq-a">No — anyone can book a court through Playtomic. No account required for one-off bookings. Membership gives you discounted rates and priority booking.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">I've never played padel — is it suitable for beginners?</div>
+          <div class="faq-a">Absolutely. Padel combines elements of tennis and squash — most people are hitting rallies within their first 20 minutes. We offer coaching sessions for all levels too.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I hire equipment?</div>
+          <div class="faq-a">Yes — rackets and balls are available to hire on-site when you arrive. Just show up in trainers and comfortable athletic wear.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is there parking?</div>
+          <div class="faq-a">Yes — we have a large dedicated free car park. The club is at Unit 4C, Simmonds Road, Wincheap Estate, Canterbury, CT1 3RA.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What are your opening hours?</div>
+          <div class="faq-a">We're open every day, 6am to 11pm — 365 days a year. Off-peak slots before midday and after 10pm are available at lower rates.</div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation" style="top:80px;">
+      FAQ kills the last objections before they close the tab. "Never played" and "do I need a membership" are the two highest-friction questions for cold traffic from Meta ads. Answer them here so they don't go Google it and not come back.
+    </div>
+  </div>
+
+  <!-- FOOTER CTA -->
+  <div class="footer-cta">
+    <h2>READY TO<br><em>PLAY?</em></h2>
+    <p>Book a court now or join as a member — Canterbury's padel community is waiting.</p>
+    <div class="footer-cta-btns">
+      <button class="btn-primary" style="background:var(--acid);color:var(--black);">Book a Court →</button>
+      <button class="btn-secondary" style="border-color:rgba(255,255,255,0.3);">View Memberships</button>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     VERSION B — MEMBERSHIP FIRST
+═══════════════════════════════════════════ -->
+<div class="version" id="version-b">
+
+  <!-- URGENCY BAR -->
+  <div class="annotated">
+    <div class="urgency-banner">
+      ⚠ LIMITED FOUNDING MEMBER SPOTS REMAINING — <span class="count">12</span> LEFT THIS MONTH
+    </div>
+    <div class="annotation" style="right:auto;left:10px;top:60px;transform:none;">
+      Membership-first page needs to open with urgency — not just brand. The "founding member" framing adds exclusivity without being dishonest. Number creates psychological commitment pressure.
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="lp-nav">
+    <div class="lp-logo">BRAKE<span>POINT</span></div>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <a href="#member-plans" style="color:#888;text-decoration:none;font-size:13px;font-weight:500;">Membership</a>
+      <a href="#book-anyway" style="color:#888;text-decoration:none;font-size:13px;font-weight:500;">Just Book a Court</a>
+      <button class="nav-cta">Join Now →</button>
+    </div>
+  </div>
+
+  <!-- MEMBERSHIP HERO -->
+  <div class="annotated">
+    <div class="membership-hero">
+      <div class="hero-grid" style="opacity:0.5;"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">Canterbury's First Indoor Padel Club</div>
+        <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(52px,7vw,88px);font-weight:900;line-height:0.9;text-transform:uppercase;">
+          UNLIMITED PADEL.
+          <em style="color:var(--acid);font-style:normal;display:block;">ONE MONTHLY FEE.</em>
+        </h1>
+        <p class="hero-sub">Stop paying per session. Join Brakepoint and get unlimited access to Canterbury's only indoor padel courts — whenever you want, however often you play.</p>
+        <div class="hero-ctas">
+          <button class="btn-primary">See Membership Plans →</button>
+          <button class="btn-secondary" onclick="document.getElementById('book-anyway').scrollIntoView({behavior:'smooth'})">Just Book a One-Off</button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">£15</div>
+          <div class="label">Membership From</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">3</div>
+          <div class="label">Indoor Panoramic Courts</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">No</div>
+          <div class="label">Lock-In Contract</div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation">
+      Hero stat "2x Monthly = Paid Off" immediately frames membership as financially rational — removes the "is it worth it" question before it's asked. "No lock-in" removes the biggest objection to committing. Secondary CTA keeps non-members on the page rather than bouncing.
+    </div>
+  </div>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-icon">✓</span> Cancel anytime</div>
+    <div class="trust-item"><span class="trust-icon">☕</span> Coffee shop &amp; pro shop</div>
+    <div class="trust-item"><span class="trust-icon">📍</span> Wincheap, Canterbury</div>
+    <div class="trust-item"><span class="trust-icon">⚡</span> 3 indoor courts</div>
+    <div class="trust-item"><span class="trust-icon">🅿</span> Free parking on-site</div>
+  </div>
+
+  <!-- MEMBERSHIP PLANS -->
+  <div class="section-divider" id="member-plans">
+    <div class="divider-label">Section 02 — Primary Conversion</div>
+    <div class="divider-note">↓ CHOOSE YOUR PLAN</div>
+  </div>
+
+  <div class="annotated">
+    <div class="membership-section" style="padding-top:60px;">
+      <div class="membership-grid" style="max-width:1200px;margin:0 auto;">
+        <div class="membership-card">
+          <div class="card-tier">Casual</div>
+          <div class="card-price"><span>£</span>XX</div>
+          <div class="card-freq">per month · cancel anytime</div>
+          <ul class="card-features">
+            <li>X court hours per month</li>
+            <li>Discounted off-peak rates</li>
+            <li>Online booking priority</li>
+            <li class="dim">Peak-time access</li>
+            <li class="dim">Guest passes included</li>
+          </ul>
+          <button class="card-cta">Start Casual</button>
+        </div>
+        <div class="membership-card featured">
+          <div class="card-tier">Gold</div>
+          <div class="card-price"><span>£</span>XX</div>
+          <div class="card-freq">per month · cancel anytime</div>
+          <ul class="card-features">
+            <li>Unlimited court access</li>
+            <li>Priority booking (7 days ahead)</li>
+            <li>Peak + off-peak included</li>
+            <li>2 guest passes/month</li>
+            <li>10% off equipment hire</li>
+          </ul>
+          <button class="card-cta">Join Gold →</button>
+        </div>
+        <div class="membership-card">
+          <div class="card-tier">Corporate / Group</div>
+          <div class="card-price" style="font-size:36px;margin-top:8px;">Get a Quote</div>
+          <div class="card-freq" style="margin-bottom:28px;">teams & businesses</div>
+          <ul class="card-features">
+            <li>Block court bookings</li>
+            <li>Corporate invoicing</li>
+            <li>Team events & socials</li>
+            <li>Dedicated account manager</li>
+          </ul>
+          <button class="card-cta">Contact Us</button>
+        </div>
+      </div>
+    </div>
+    <div class="annotation" style="right:auto;left:10px;">
+      Membership pricing shown immediately after the hero — no scrolling past content they haven't opted into. "Cancel anytime" on every card is a trust signal, not a weakness. "Founding member spots" scarcity from the top bar makes the CTA more urgent.
+    </div>
+  </div>
+
+  <!-- COMPARE TABLE -->
+  <div class="annotated">
+    <div class="section" style="background:var(--black);padding-top:0;padding-bottom:70px;">
+      <div style="max-width:800px;margin:0 auto;">
+        <div class="section-label">Make the Right Call</div>
+        <div class="section-title">MEMBER VS<br>PAY AS YOU GO</div>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th style="width:40%;">Feature</th>
+              <th>Pay-As-You-Go</th>
+              <th class="highlight">Membership</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Court cost per session</td>
+              <td>Full price</td>
+              <td style="color:var(--acid);">Included / discounted</td>
+            </tr>
+            <tr>
+              <td>Advance booking window</td>
+              <td>2 days</td>
+              <td style="color:var(--acid);">7 days (Gold)</td>
+            </tr>
+            <tr>
+              <td>Peak time access</td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Off-peak rate</td>
+              <td>Standard</td>
+              <td style="color:var(--acid);">Reduced</td>
+            </tr>
+            <tr>
+              <td>Guest passes</td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="check">✓ 2/month (Gold)</span></td>
+            </tr>
+            <tr>
+              <td>Equipment discount</td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="check">✓ 10% off</span></td>
+            </tr>
+            <tr>
+              <td>Break-even point</td>
+              <td>—</td>
+              <td style="color:var(--acid);">2 sessions/month</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="annotation" style="top:100px;">
+      Comparison table kills the "is it worth it" question objectively. "Break-even: 2 sessions" is the killer stat — anyone who plays more than twice is losing money not being a member. This is the section that converts the fence-sitters.
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS (MEMBER-FOCUSED) -->
+  <div class="annotated">
+    <div class="reviews-section">
+      <div class="section-label">Member Stories</div>
+      <div class="section-title">WHAT MEMBERS SAY</div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"I was booking 3 times a week and spending a fortune. The Green membership gives 30% off every session — it basically pays for itself. Wish I'd done it sooner."</div>
+          <div class="reviewer">
+            <div class="reviewer-avatar">TK</div>
+            <div>
+              <div class="reviewer-name">Tom K.</div>
+              <div class="reviewer-meta">Gold Gold Member · 8 months</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"Started on Work From Home — £25/month and 30% off mornings. It was a no-brainer. Still on it 4 months later."</div>
+          <div class="reviewer">
+            <div class="reviewer-avatar">LB</div>
+            <div>
+              <div class="reviewer-name">Laura B.</div>
+              <div class="reviewer-meta">Casual Member · 4 months</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"Got the corporate package for our team. We do Thursday morning sessions now — best for morale we've ever tried. Courts are always ready."</div>
+          <div class="reviewer">
+            <div class="reviewer-avatar">MH</div>
+            <div>
+              <div class="reviewer-name">Mark H.</div>
+              <div class="reviewer-meta">Corporate Account · Canterbury</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation">
+      All 3 reviews target a different membership objection: ROI (Tom), commitment fear (Laura), corporate use case (Mark). Each one does specific conversion work — not just generic praise. Placed after pricing so they're reinforcing the decision, not being used to introduce it.
+    </div>
+  </div>
+
+  <!-- BOOKING FALLBACK -->
+  <div class="section-divider" id="book-anyway">
+    <div class="divider-label">Section 05 — Secondary Conversion Path</div>
+    <div class="divider-note">↓ NOT READY FOR A MEMBERSHIP?</div>
+  </div>
+
+  <div class="annotated">
+    <div class="booking-section dark-green" style="padding:70px 40px;">
+      <div class="booking-layout">
+        <div class="booking-sidebar">
+          <div class="section-label">Try Before You Commit</div>
+          <h2>JUST WANT TO<br><em>PLAY?</em></h2>
+          <p>No membership needed. Book a court, see what the fuss is about. Most people who book once become members within a month.</p>
+          <ul class="benefit-list">
+            <li>Instant online booking via Playtomic</li>
+            <li>No account needed for one-off bookings</li>
+            <li>Equipment hire available on-site</li>
+            <li>Coaching &amp; beginner sessions available</li>
+          </ul>
+          <div class="peak-callout">
+            <div class="label">💡 Off-Peak Slots</div>
+            <p>Mornings and late evenings are cheaper and usually available same-day. Perfect for a first session.</p>
+          </div>
+        </div>
+        <div>
+          <div class="widget-frame">
+            <div class="widget-frame-label">↓ Book a Court — Brakepoint Padel</div>
+            <div style="padding-top:45px;">
+              <iframe 
+                src="https://playtomic.com/clubs/brakepoint-padel-club/embed"
+                width="100%" 
+                height="620"
+                frameborder="0"
+                scrolling="auto"
+                allow="payment">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation">
+      The widget here is positioned as the "lower commitment" option — not the default. Framing it as a trial path ("Most people who book once become members") is a conversion bridge between booking and membership. Captures people who scrolled past the membership section without converting.
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <div class="section-label">Common Questions</div>
+    <div class="section-title">FAQ</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Can I cancel my membership at any time?</div>
+        <div class="faq-a">Yes — no lock-in contracts. Cancel with 30 days' notice at any time. No hidden fees.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is membership worth it if I only play once a week?</div>
+        <div class="faq-a">Work From Home (£25/mo) breaks even at 2–3 off-peak weekday sessions. Green (£50/mo) breaks even around 4–5 sessions per month at standard rates. Run the numbers above.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I bring guests if I'm a member?</div>
+        <div class="faq-a">All tiers use standard court rates for guests — book extra slots through Playtomic and your discount applies.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I want to upgrade my membership tier?</div>
+        <div class="faq-a">Easy — contact us at info@brakepointpadel.com and we'll upgrade your plan from the next billing cycle.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER CTA -->
+  <div class="footer-cta">
+    <h2>JOIN THE<br><em>CLUB.</em></h2>
+    <p>Canterbury's padel community is growing fast. Lock in your membership rate before prices change.</p>
+    <div class="footer-cta-btns">
+      <button class="btn-primary" style="background:var(--acid);color:var(--black);">Get Membership →</button>
+      <button class="btn-secondary" style="border-color:rgba(255,255,255,0.3);">Book a Court First</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- SCRIPT -->
+<script>
+function switchTab(v) {
+  document.querySelectorAll('.version').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('version-' + v).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({ top: 80, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
